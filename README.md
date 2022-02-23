@@ -1,16 +1,15 @@
-# flutter_template_project
+# Шаблон Flutter-приложения
 
-A new Flutter project.
+Как пользоваться:
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Скопировать этот репозиторий (`git clone https://github.com/Ae-Mc/flutter-template-project`)
+2. Переименовать все вхождения `flutter_template_project` на предпочитаемое имя проекта (например, `my_cool_app`). Это можно осуществить с помощью инструмента поиска и замены в проекте из Visual Studio Code.
+3. Выполнить команды
+   ```bash
+   flutter pub get
+   flutter pub run rename -a <Имя приложения>
+   flutter pub run rename -b <Application ID>
+   flutter pub run build_runner build
+   ```
+   Application ID — уникальный идентификатор приложения для публикации в Google Play и App Store.
+4. Перезапустить IDE
