@@ -11,28 +11,21 @@ class CounterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => GetIt.I<CounterCubit>(),
-      child: Builder(
-        builder: (context) {
-          return Scaffold(
-            body: SafeArea(
-              child: Center(
-                child: BlocBuilder<CounterCubit, int>(
-                  builder: (context, state) => Text(
-                    'Counter value: $state',
-                    style: AppTheme.of(context).textTheme.headline2,
-                  ),
-                ),
-              ),
+      child: BlocBuilder<CounterCubit, int>(
+        builder: (context, state) => Scaffold(
+          body: Center(
+            child: Text(
+              'Counter value: $state',
+              style: AppTheme.of(context).textTheme.headline2,
             ),
-            floatingActionButton: FloatingActionButton.small(
-              child: const Icon(Icons.add),
-              onPressed: () =>
-                  BlocProvider.of<CounterCubit>(context).increment(),
-              backgroundColor: AppTheme.of(context).colorTheme.primary,
-              foregroundColor: AppTheme.of(context).colorTheme.onPrimary,
-            ),
-          );
-        },
+          ),
+          floatingActionButton: FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: () => BlocProvider.of<CounterCubit>(context).increment(),
+            backgroundColor: AppTheme.of(context).colorTheme.primary,
+            foregroundColor: AppTheme.of(context).colorTheme.onPrimary,
+          ),
+        ),
       ),
     );
   }
