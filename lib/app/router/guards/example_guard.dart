@@ -10,7 +10,7 @@ class ExampleGuard implements AutoRouteGuard {
   void onNavigation(NavigationResolver resolver, StackRouter router) {
     if (!isAuthorized()) {
       // ignore: avoid-ignoring-return-values
-      router.push(const SplashRoute());
+      router.push(const CounterRoute());
     } else {
       resolver.next();
     }
