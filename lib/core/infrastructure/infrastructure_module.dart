@@ -11,4 +11,10 @@ abstract class InfrastructureModule {
 
   @lazySingleton
   Dio dio() => Dio();
+
+  @preResolve
+  Future<String> exampleAsyncDependency() => Future.delayed(
+        const Duration(seconds: 2),
+        () => 'Hello world!',
+      );
 }

@@ -2,12 +2,13 @@ import 'package:flutter_template_project/core/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_template_project/features/splash/data/models/initialization_status.dart';
 import 'package:flutter_template_project/features/splash/domain/repositories/startup_repository.dart';
+import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+import 'package:flutter_template_project/features/splash/data/repositories/startup_repository_impl.config.dart';
 
-@Singleton(as: StartupRepository)
+@InjectableInit(initializerName: "configureDependencies")
 class StartupRepositoryImpl implements StartupRepository {
-  InitializationStatus initializationStatus =
-      InitializationStatus(loadingInitialized: false);
+  InitializationStatus initializationStatus = InitializationStatus();
 
   @override
   bool get isInitialized {
@@ -15,28 +16,18 @@ class StartupRepositoryImpl implements StartupRepository {
   }
 
   @override
-  Future<Either<List<Failure>, void>> initialize() async {
-    List<Failure> failures = [];
-    initializationStatus = initializationStatus.copyWith(
-      loadingInitialized: (await initializeLoading()).fold(
-        (l) {
-          failures.add(l);
-
-          return false;
-        },
-        (r) => true,
-      ),
-    );
-
-    return failures.isEmpty ? const Right(null) : Left(failures);
-  }
+  Future<Either<List<Failure>, void>> initialize() =>
+      initializeAllNotInitialized();
 
   @override
-  Future<Either<List<Failure>, void>> retryInitialization() async {
+  Future<Either<List<Failure>, void>> retryInitialization() =>
+      initializeAllNotInitialized();
+
+  Future<Either<List<Failure>, void>> initializeAllNotInitialized() async {
     List<Failure> failures = [];
-    if (!initializationStatus.loadingInitialized) {
+    if (!initializationStatus.getItInitialized) {
       initializationStatus = initializationStatus.copyWith(
-        loadingInitialized: (await initializeLoading()).fold(
+        getItInitialized: (await initializeGetIt()).fold(
           (l) {
             failures.add(l);
 
@@ -50,8 +41,13 @@ class StartupRepositoryImpl implements StartupRepository {
     return failures.isEmpty ? const Right(null) : Left(failures);
   }
 
-  Future<Either<Failure, void>> initializeLoading() async {
-    await Future.delayed(const Duration(seconds: 2), () => null);
+  Future<Either<Failure, void>> initializeGetIt() async {
+    try {
+      // ignore: avoid-ignoring-return-values
+      await configureDependencies(GetIt.I);
+    } catch (_) {
+      return const Left(Failure.unknownFailure());
+    }
 
     return const Right(null);
   }

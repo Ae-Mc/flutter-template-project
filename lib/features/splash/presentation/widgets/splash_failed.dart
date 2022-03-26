@@ -13,16 +13,12 @@ class SplashFailed extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const FlutterLogo(size: 128),
-        SizedBox(
-          height: 48,
-          width: 48,
-          child: FloatingActionButton.small(
-            onPressed: () => BlocProvider.of<SplashBloc>(context)
-                .add(const SplashEvent.retryInitialization()),
-            child: const Icon(Icons.replay),
-            backgroundColor: AppTheme.of(context).colorTheme.primary,
-            foregroundColor: AppTheme.of(context).colorTheme.onPrimary,
-          ),
+        FloatingActionButton(
+          onPressed: () => BlocProvider.of<SplashBloc>(context)
+              .add(const SplashEvent.retryInitialization()),
+          child: const Icon(Icons.replay),
+          backgroundColor: AppTheme.of(context).colorTheme.primary,
+          foregroundColor: AppTheme.of(context).colorTheme.onPrimary,
         ),
       ],
     );
