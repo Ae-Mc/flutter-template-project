@@ -26,6 +26,7 @@ class App extends StatelessWidget {
       ],
       child: BlocBuilder<AppThemeBloc, AppTheme>(
         builder: (context, state) => MaterialApp(
+          // TODO: Change app title
           title: "Flutter template project",
           debugShowCheckedModeBanner: false,
           home: BlocBuilder<SplashBloc, SplashState>(
