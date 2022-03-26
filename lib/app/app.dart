@@ -29,6 +29,8 @@ class App extends StatelessWidget {
               colorScheme: const ColorScheme.light().copyWith(
                 background: state.colorTheme.background,
                 brightness: state.colorTheme.brightness,
+              error: state.colorTheme.error,
+              onError: state.colorTheme.onError,
                 onPrimary: state.colorTheme.onPrimary,
                 primary: state.colorTheme.primary,
               ),
