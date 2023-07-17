@@ -6,7 +6,7 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter_template_project/features/splash/data/repositories/startup_repository_impl.config.dart';
 
-@InjectableInit(initializerName: "configureDependencies")
+@InjectableInit(initializerName: "init", preferRelativeImports: false)
 class StartupRepositoryImpl implements StartupRepository {
   InitializationStatus initializationStatus = InitializationStatus();
 
@@ -44,7 +44,7 @@ class StartupRepositoryImpl implements StartupRepository {
   Future<Either<Failure, void>> initializeGetIt() async {
     try {
       // ignore: avoid-ignoring-return-values
-      await configureDependencies(GetIt.I);
+      await GetIt.I.init();
     } catch (_) {
       return const Left(Failure.unknownFailure());
     }

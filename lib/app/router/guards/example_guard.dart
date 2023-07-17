@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter_template_project/app/router/app_router.gr.dart';
+import 'package:flutter_template_project/app/router/app_router.dart';
 
 class ExampleGuard implements AutoRouteGuard {
   final bool Function() isAuthorized;

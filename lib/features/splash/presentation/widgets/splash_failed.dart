@@ -16,9 +16,9 @@ class SplashFailed extends StatelessWidget {
         FloatingActionButton(
           onPressed: () => BlocProvider.of<SplashBloc>(context)
               .add(const SplashEvent.retryInitialization()),
-          child: const Icon(Icons.replay),
           backgroundColor: AppTheme.of(context).colorTheme.primary,
           foregroundColor: AppTheme.of(context).colorTheme.onPrimary,
+          child: const Icon(Icons.replay),
         ),
       ],
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_template_project/app/router/app_router.gr.dart';
+import 'package:flutter_template_project/app/router/app_router.dart';
 import 'package:flutter_template_project/app/theme/bloc/app_theme.dart';
 import 'package:flutter_template_project/app/theme/bloc/app_theme_bloc.dart';
 import 'package:flutter_template_project/features/splash/data/repositories/startup_repository_impl.dart';
