@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_template_project/arch/single_result_bloc/single_result_bloc.dart';
+import 'package:single_result_bloc/single_result_bloc.dart';
 import 'package:flutter_template_project/core/failure.dart';
 import 'package:flutter_template_project/features/splash/domain/repositories/startup_repository.dart';
 import 'package:flutter_template_project/features/splash/presentation/bloc/splash_event.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:single_result_bloc/single_result_bloc.dart';
 import 'package:flutter_template_project/arch/custom_toast/custom_toast.dart';
-import 'package:flutter_template_project/arch/single_result_bloc/single_result_bloc_builder.dart';
 import 'package:flutter_template_project/features/splash/presentation/bloc/splash_bloc.dart';
 import 'package:flutter_template_project/features/splash/presentation/bloc/splash_event.dart';
 import 'package:flutter_template_project/features/splash/presentation/bloc/splash_state.dart';
